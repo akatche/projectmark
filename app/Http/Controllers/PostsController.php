@@ -19,6 +19,7 @@ class PostsController extends Controller
         return Inertia::render('Post/Index', [
             'posts' => Post::all()->map(function ($post) {
                 return [
+                    'id' => $post->id,
                     'title' => $post->title,
                     'publication_date' => $post->publication_date->toDateTimeString(),
                     'views' => $post->views

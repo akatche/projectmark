@@ -3188,8 +3188,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3215,6 +3213,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -25276,7 +25282,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Posts\n                        "
+                        "\n                            Dashboard\n                        "
                       )
                     ]
                   )
@@ -26593,14 +26599,12 @@ var render = function() {
     [
       _vm._v(" "),
       _c("div", { staticClass: "py-12" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c(
-            "div",
-            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-            [_c("posts", { attrs: { posts: _vm.posts } })],
-            1
-          )
-        ])
+        _c(
+          "div",
+          { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" },
+          [_c("posts", { attrs: { posts: _vm.posts } })],
+          1
+        )
       ])
     ]
   )
@@ -26627,97 +26631,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "p-6 sm:px-20 bg-white border-b border-gray-200" },
-      [
-        _c(
-          "inertia-link",
-          {
-            staticClass: "btn-indigo",
-            attrs: { href: _vm.route("posts.create") }
-          },
-          [
-            _c("span", [_vm._v("Create")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "hidden md:inline" }, [
-              _vm._v("Organization")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
-          },
-          [
-            _c(
-              "table",
-              { staticClass: "min-w-full divide-y divide-gray-200" },
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  { staticClass: "bg-white divide-y divide-gray-200" },
-                  _vm._l(_vm.posts, function(post) {
-                    return _c("tr", { key: post.id }, [
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(post.title) +
-                              "\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(post.publication_date) +
-                              "\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(post.views) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    ])
-                  }),
-                  0
-                )
-              ]
-            )
-          ]
-        )
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c(
+        "inertia-link",
+        {
+          staticClass: "btn-indigo",
+          attrs: { href: _vm.route("posts.create") }
+        },
+        [
+          _c("span", [_vm._v("Create")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "hidden md:inline" }, [_vm._v("Post")])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+            },
+            [
+              _c(
+                "table",
+                { staticClass: "min-w-full divide-y divide-gray-200" },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    { staticClass: "bg-white divide-y divide-gray-200" },
+                    _vm._l(_vm.posts, function(post) {
+                      return _c("tr", { key: post.id }, [
+                        _c(
+                          "td",
+                          {
+                            staticClass:
+                              "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(post.title) +
+                                "\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass:
+                              "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(post.publication_date) +
+                                "\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(post.views) +
+                                "\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                          [
+                            _c(
+                              "jet-button",
+                              [
+                                _c(
+                                  "inertia-link",
+                                  {
+                                    attrs: {
+                                      href: _vm.route("posts.show", post.id)
+                                    }
+                                  },
+                                  [_c("span", [_vm._v("See Post")])]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -26755,7 +26783,9 @@ var staticRenderFns = [
               "px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
           },
           [_vm._v("\n                        Views\n                    ")]
-        )
+        ),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-6 py-3 bg-gray-50" })
       ])
     ])
   }
@@ -42446,6 +42476,11 @@ var Ziggy = {
     },
     "posts.create": {
       "uri": "posts\/create",
+      "methods": ["GET", "HEAD"],
+      "domain": null
+    },
+    "posts.show": {
+      "uri": "posts\/{post}",
       "methods": ["GET", "HEAD"],
       "domain": null
     }

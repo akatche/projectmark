@@ -25,3 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/posts/create', [PostsController::class, 'create'])
     ->name('posts.create');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/posts/{post}', [PostsController::class, 'show'])
+    ->name('posts.show');
