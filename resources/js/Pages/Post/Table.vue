@@ -59,7 +59,7 @@
             JetButton
         },
         props: {
-            posts: Object,
+            posts: Array,
         },
     }
 </script>

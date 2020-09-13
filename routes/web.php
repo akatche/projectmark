@@ -18,14 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', [PostsController::class, 'index'])
-    ->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/posts/create', [PostsController::class, 'create'])
+    ->get('/posts', [PostsController::class, 'index'])
+    ->name('posts');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard/posts/create', [PostsController::class, 'create'])
     ->name('posts.create');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/posts/{post}', [PostsController::class, 'show'])
+    ->get('/dashboard/posts/{post}', [PostsController::class, 'show'])
     ->name('posts.show');
