@@ -21,7 +21,7 @@ class PostsController extends Controller
                 return [
                     'title' => $post->title,
                     'description' => $post->description,
-                    'publication_date' => $post->publication_date
+                    'publication_date' => $post->publication_date->toDateTimeString()
                 ];
             }),
         ]);

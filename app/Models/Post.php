@@ -20,4 +20,13 @@ class Post extends Model
         'publication_date',
         'user_id'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'publication_date',
+    ];
 }

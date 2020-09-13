@@ -29,3 +29,5 @@ Vue.mixin({
         route: (name, params, absolute) => route(name, params, absolute, Ziggy),
     },
 });
+
+Vue.prototype.$route = (...args) => route(...args).url();

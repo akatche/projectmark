@@ -17,7 +17,7 @@ class PostsTable extends Migration
             $table->id();
             $table->text('title');
             $table->text('description');
-            $table->date('publication_date');
+            $table->dateTime('publication_date');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
