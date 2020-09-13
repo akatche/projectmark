@@ -5,6 +5,8 @@ import Vue from 'vue';
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
+import route from 'ziggy';
+import { Ziggy } from './ziggy';
 
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
@@ -21,3 +23,9 @@ new Vue({
             },
         }),
 }).$mount(app);
+
+Vue.mixin({
+    methods: {
+        route: (name, params, absolute) => route(name, params, absolute, Ziggy),
+    },
+});
