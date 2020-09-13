@@ -37,12 +37,10 @@ class ImportPosts extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar();
-
-        $bar->start();
+        $this->info('Importing posts...');
 
         \App\Jobs\ImportPosts::dispatchSync();
 
-        $bar->finish();
+        $this->info('Posts have been correctly imported into the platform.');
     }
 }
