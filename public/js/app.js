@@ -3258,8 +3258,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -25272,13 +25270,13 @@ var render = function() {
                     "jet-nav-link",
                     {
                       attrs: {
-                        href: "/dashboard",
-                        active: _vm.$page.currentRouteName == "dashboard"
+                        href: "/posts",
+                        active: _vm.$page.currentRouteName == "posts"
                       }
                     },
                     [
                       _vm._v(
-                        "\n                            Dashboard\n                        "
+                        "\n                            Posts\n                        "
                       )
                     ]
                   )
@@ -26697,7 +26695,17 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(1, true)
+                      _c(
+                        "td",
+                        { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(post.views) +
+                              "\n                    "
+                          )
+                        ]
+                      )
                     ])
                   }),
                   0
@@ -26749,21 +26757,6 @@ var staticRenderFns = [
           [_vm._v("\n                        Views\n                    ")]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "px-6 py-4 whitespace-no-wrap" }, [
-      _c(
-        "span",
-        {
-          staticClass:
-            "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-        },
-        [_vm._v("\n                          Active\n                        ")]
-      )
     ])
   }
 ]
@@ -42446,13 +42439,13 @@ var Ziggy = {
       "methods": ["DELETE"],
       "domain": null
     },
-    "posts": {
+    "dashboard": {
       "uri": "dashboard",
       "methods": ["GET", "HEAD"],
       "domain": null
     },
     "posts.create": {
-      "uri": "dashboard\/create",
+      "uri": "posts\/create",
       "methods": ["GET", "HEAD"],
       "domain": null
     }

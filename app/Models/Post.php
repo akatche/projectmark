@@ -29,4 +29,13 @@ class Post extends Model
     protected $dates = [
         'publication_date',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'views' => 'integer',
+    ];
 }

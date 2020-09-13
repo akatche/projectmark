@@ -20,8 +20,8 @@ class PostsController extends Controller
             'posts' => Post::all()->map(function ($post) {
                 return [
                     'title' => $post->title,
-                    'description' => $post->description,
-                    'publication_date' => $post->publication_date->toDateTimeString()
+                    'publication_date' => $post->publication_date->toDateTimeString(),
+                    'views' => $post->views
                 ];
             }),
         ]);

@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', [PostsController::class, 'index'])
-    ->name('posts');
+    ->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard/create', [PostsController::class, 'create'])
+    ->get('/posts/create', [PostsController::class, 'create'])
     ->name('posts.create');
