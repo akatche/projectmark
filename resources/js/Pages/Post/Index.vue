@@ -9,6 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <posts :posts="posts" />
+                <pagination :links="posts.links" />
             </div>
         </div>
     </app-layout>
@@ -17,11 +18,13 @@
 <script>
     import AppLayout from './../../Layouts/AppLayout'
     import Posts from './Table'
+    import Pagination from "../../Shared/Pagination";
 
     export default {
         components: {
             AppLayout,
             Posts,
+            Pagination
         },
         props: {
             posts: Array,

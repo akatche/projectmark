@@ -20,7 +20,7 @@ class PostsController extends Controller
     public function index()
     {
         return Inertia::render('Post/Index', [
-            'posts' => Post::all()->map(function ($post) {
+            'posts' => Post::paginate(5)->transform(function ($post) {
                 return [
                     'id' => $post->id,
                     'title' => $post->title,
