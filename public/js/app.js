@@ -3384,6 +3384,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3407,8 +3409,7 @@ __webpack_require__.r(__webpack_exports__);
         title: this.title,
         description: this.description
       }, {
-        bag: 'createNewPost',
-        resetOnSuccess: false
+        bag: 'createNewPost'
       })
     };
   },
@@ -27287,138 +27288,144 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("div", [
-        _c(
-          "div",
-          { staticClass: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" },
-          [
-            _c("jet-form-section", {
-              on: { submitted: _vm.createNewPost },
-              scopedSlots: _vm._u([
-                {
-                  key: "title",
-                  fn: function() {
-                    return [
-                      _vm._v(
-                        "\n                    Create new Post\n                "
-                      )
-                    ]
-                  },
-                  proxy: true
+      _c(
+        "div",
+        { staticClass: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" },
+        [
+          _c("jet-form-section", {
+            on: { submitted: _vm.createNewPost },
+            scopedSlots: _vm._u([
+              {
+                key: "title",
+                fn: function() {
+                  return [
+                    _vm._v("\n                Create new Post\n            ")
+                  ]
                 },
-                {
-                  key: "description",
-                  fn: function() {
-                    return [
-                      _vm._v(
-                        "\n                    It will be published once saved\n                "
-                      )
-                    ]
-                  },
-                  proxy: true
+                proxy: true
+              },
+              {
+                key: "description",
+                fn: function() {
+                  return [
+                    _vm._v(
+                      "\n                It will be published once saved\n            "
+                    )
+                  ]
                 },
-                {
-                  key: "form",
-                  fn: function() {
-                    return [
-                      _c(
-                        "div",
-                        { staticClass: "col-span-6 sm:col-span-4" },
-                        [
-                          _c("jet-label", {
-                            attrs: { for: "title", value: "Title" }
-                          }),
-                          _vm._v(" "),
-                          _c("jet-input", {
-                            staticClass: "mt-1 block w-full",
-                            attrs: { id: "title", type: "text" },
-                            model: {
-                              value: _vm.form.title,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "title", $$v)
-                              },
-                              expression: "form.title"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("jet-input-error", {
-                            staticClass: "mt-2",
-                            attrs: { message: _vm.form.error("title") }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-span-6 sm:col-span-4" },
-                        [
-                          _c("jet-label", {
-                            attrs: { for: "description", value: "Description" }
-                          }),
-                          _vm._v(" "),
-                          _c("jet-input", {
-                            staticClass: "mt-1 block w-full",
-                            attrs: { id: "description", type: "description" },
-                            model: {
-                              value: _vm.form.description,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "description", $$v)
-                              },
-                              expression: "form.description"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("jet-input-error", {
-                            staticClass: "mt-2",
-                            attrs: { message: _vm.form.error("description") }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  },
-                  proxy: true
+                proxy: true
+              },
+              {
+                key: "form",
+                fn: function() {
+                  return [
+                    _vm._l(_vm.form.errors(), function(error) {
+                      return _c("li", [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(error) +
+                            "\n                "
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "title", value: "Title" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "title", type: "text" },
+                          model: {
+                            value: _vm.form.title,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "title", $$v)
+                            },
+                            expression: "form.title"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: { message: _vm.form.error("title") }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "description", value: "Description" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "description", type: "description" },
+                          model: {
+                            value: _vm.form.description,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "description", $$v)
+                            },
+                            expression: "form.description"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: { message: _vm.form.error("description") }
+                        })
+                      ],
+                      1
+                    )
+                  ]
                 },
-                {
-                  key: "actions",
-                  fn: function() {
-                    return [
-                      _c(
-                        "jet-action-message",
-                        {
-                          staticClass: "mr-3",
-                          attrs: { on: _vm.form.recentlySuccessful }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Published\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "jet-button",
-                        {
-                          class: { "opacity-25": _vm.form.processing },
-                          attrs: { disabled: _vm.form.processing }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Publish Post\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  },
-                  proxy: true
-                }
-              ])
-            })
-          ],
-          1
-        )
-      ])
+                proxy: true
+              },
+              {
+                key: "actions",
+                fn: function() {
+                  return [
+                    _c(
+                      "jet-action-message",
+                      {
+                        staticClass: "mr-3",
+                        attrs: { on: _vm.form.recentlySuccessful }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Published\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "jet-button",
+                      {
+                        class: { "opacity-25": _vm.form.processing },
+                        attrs: { disabled: _vm.form.processing }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Publish Post\n                "
+                        )
+                      ]
+                    )
+                  ]
+                },
+                proxy: true
+              }
+            ])
+          })
+        ],
+        1
+      )
     ]
   )
 }
