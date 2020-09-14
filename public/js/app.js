@@ -3328,6 +3328,50 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../Jetstream/FormSection */ "./resources/js/Jetstream/FormSection.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../Jetstream/ActionMessage */ "./resources/js/Jetstream/ActionMessage.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3345,9 +3389,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    JetFormSection: _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetActionMessage: _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_6__["default"]
+  },
+  data: function data() {
+    return {
+      form: this.$inertia.form({
+        '_method': 'PUT',
+        title: this.title,
+        description: this.description
+      }, {
+        bag: 'updateProfileInformation',
+        resetOnSuccess: false
+      }),
+      photoPreview: null
+    };
+  },
+  methods: {
+    updateProfileInformation: function updateProfileInformation() {
+      if (this.$refs.photo) {
+        this.form.photo = this.$refs.photo.files[0];
+      }
+
+      this.form.post('/user/profile-information', {
+        preserveScroll: true
+      });
+    }
   }
 });
 
@@ -25825,7 +25905,7 @@ var render = function() {
                     "jet-nav-link",
                     {
                       attrs: {
-                        href: "/posts",
+                        href: "/dashboard/posts",
                         active: _vm.$page.currentRouteName == "posts"
                       }
                     },
@@ -27196,7 +27276,18 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Posts / Create\n        ")]
+                [
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass: "text-indigo-500",
+                      attrs: { href: _vm.route("posts") }
+                    },
+                    [_vm._v("Posts")]
+                  ),
+                  _vm._v(" / Create\n        ")
+                ],
+                1
               )
             ]
           },
@@ -27208,7 +27299,152 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "py-12" }, [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _vm._v("\n            hola\n        ")
+          _c(
+            "div",
+            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "p-6 sm:px-20 bg-white border-b border-gray-200"
+                },
+                [
+                  _c("jet-form-section", {
+                    on: { submitted: _vm.updateProfileInformation },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "title",
+                        fn: function() {
+                          return [
+                            _vm._v(
+                              "\n                            Create new Post\n                        "
+                            )
+                          ]
+                        },
+                        proxy: true
+                      },
+                      {
+                        key: "description",
+                        fn: function() {
+                          return [
+                            _vm._v(
+                              "\n                            It will be published once saved\n                        "
+                            )
+                          ]
+                        },
+                        proxy: true
+                      },
+                      {
+                        key: "form",
+                        fn: function() {
+                          return [
+                            _c(
+                              "div",
+                              { staticClass: "col-span-6 sm:col-span-4" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { for: "title", value: "Title" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { id: "title", type: "text" },
+                                  model: {
+                                    value: _vm.form.title,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.form, "title", $$v)
+                                    },
+                                    expression: "form.title"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input-error", {
+                                  staticClass: "mt-2",
+                                  attrs: { message: _vm.form.error("title") }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-6 sm:col-span-4" },
+                              [
+                                _c("jet-label", {
+                                  attrs: {
+                                    for: "description",
+                                    value: "Description"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: {
+                                    id: "description",
+                                    type: "description"
+                                  },
+                                  model: {
+                                    value: _vm.form.description,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.form, "description", $$v)
+                                    },
+                                    expression: "form.description"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input-error", {
+                                  staticClass: "mt-2",
+                                  attrs: {
+                                    message: _vm.form.error("description")
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]
+                        },
+                        proxy: true
+                      },
+                      {
+                        key: "actions",
+                        fn: function() {
+                          return [
+                            _c(
+                              "jet-action-message",
+                              {
+                                staticClass: "mr-3",
+                                attrs: { on: _vm.form.recentlySuccessful }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Published\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "jet-button",
+                              {
+                                class: { "opacity-25": _vm.form.processing },
+                                attrs: { disabled: _vm.form.processing }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Publish Post\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ])
+                  })
+                ],
+                1
+              )
+            ]
+          )
         ])
       ])
     ]
@@ -43348,7 +43584,7 @@ var Ziggy = {
       "domain": null
     },
     "posts": {
-      "uri": "posts",
+      "uri": "dashboard\/posts",
       "methods": ["GET", "HEAD"],
       "domain": null
     },

@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/posts', [PostsController::class, 'index'])
+    ->get('dashboard/posts', [PostsController::class, 'index'])
     ->name('posts');
 
 Route::middleware(['auth:sanctum', 'verified'])
