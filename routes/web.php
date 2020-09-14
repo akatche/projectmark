@@ -22,14 +22,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('dashboard/posts', [PostsController::class, 'index'])
-    ->name('posts');
+Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(function () {
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard/posts/create', [PostsController::class, 'create'])
-    ->name('posts.create');
+    Route::resource('posts', PostsController::class)->only([
+        'index', 'create', 'store', 'show'
+    ]);
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard/posts/{post}', [PostsController::class, 'show'])
-    ->name('posts.show');
+});

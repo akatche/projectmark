@@ -38,4 +38,13 @@ class Post extends Model
     protected $casts = [
         'views' => 'integer',
     ];
+
+    /**
+     * Retrieves the author of the post
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }
