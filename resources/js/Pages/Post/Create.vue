@@ -29,9 +29,9 @@
                     </div>
 
                     <!-- Email -->
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-10">
                         <jet-label for="description" value="Description" />
-                        <jet-input id="description" type="description" class="mt-1 block w-full" v-model="form.description" />
+                        <VueTrix inputId="editor1" v-model="form.description" placeholder="Enter your post description..."/>
                         <jet-input-error :message="form.error('description')" class="mt-2" />
                     </div>
                 </template>
@@ -58,6 +58,7 @@
     import JetButton from './../../Jetstream/Button'
     import JetLabel from './../../Jetstream/Label'
     import JetActionMessage from './../../Jetstream/ActionMessage'
+    import VueTrix from "vue-trix";
 
     export default {
         components: {
@@ -67,7 +68,8 @@
             JetInputError,
             JetButton,
             JetLabel,
-            JetActionMessage
+            JetActionMessage,
+            VueTrix
         },
 
         data() {
@@ -90,3 +92,9 @@
         },
     }
 </script>
+
+<style>
+    trix-editor {
+        height: 150px !important;
+    }
+</style>
