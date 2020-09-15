@@ -72,42 +72,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--&lt;!&ndash; Responsive Navigation Menu &ndash;&gt;-->
-            <!--<div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">-->
-                <!--<div class="pt-2 pb-3 space-y-1">-->
-                    <!--<jet-responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">-->
-                        <!--Dashboard-->
-                    <!--</jet-responsive-nav-link>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; Responsive Settings Options &ndash;&gt;-->
-                <!--<div class="pt-4 pb-1 border-t border-gray-200">-->
-                    <!--<div class="flex items-center px-4">-->
-                        <!--<div class="flex-shrink-0">-->
-                            <!--<img class="h-10 w-10 rounded-full" :src="$page.user.profile_photo_url" :alt="$page.user.name" />-->
-                        <!--</div>-->
-
-                        <!--<div class="ml-3">-->
-                            <!--<div class="font-medium text-base text-gray-800">{{ $page.user.name }}</div>-->
-                            <!--<div class="font-medium text-sm text-gray-500">{{ $page.user.email }}</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="mt-3 space-y-1">-->
-                        <!--<jet-responsive-nav-link href="/user/profile" :active="$page.currentRouteName == 'profile.show'">-->
-                            <!--Profile-->
-                        <!--</jet-responsive-nav-link>-->
-
-                        <!--&lt;!&ndash; Authentication &ndash;&gt;-->
-                        <!--<form method="POST" @submit.prevent="logout">-->
-                            <!--<jet-responsive-nav-link as="button">-->
-                                <!--Logout-->
-                            <!--</jet-responsive-nav-link>-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
         </nav>
 
         <!-- Page Content -->

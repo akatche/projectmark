@@ -17,7 +17,9 @@ class HomePageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $posts = Cache::rememberForever('homepage-posts', function () {
+        $currentPage = request()->get('page',1);
+
+        $posts = Cache::rememberForever('homepage-posts'. '_page_' . $currentPage, function () {
 
             $posts = Post::orderByDesc('publication_date')->paginate(3);
 
