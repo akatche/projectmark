@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBlogPost;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -75,16 +76,22 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
+        $postCache = Cache::rememberForever('post'. $post->id, function () use($post) {
+
+          return [
+              'id' => $post->id,
+              'title' => $post->title,
+              'description' => html_entity_decode($post->description),
+              'date' => $post->publication_date->toFormattedDateString(),
+              'datetime' => $post->publication_date->toAtomString(),
+              'author' => $post->author->name,
+              'views' => $post->views
+          ];
+
+        });
+
         return Inertia::render('Post/Show', [
-            'post' => [
-                'id' => $post->id,
-                'title' => $post->title,
-                'description' => html_entity_decode($post->description),
-                'date' => $post->publication_date->toFormattedDateString(),
-                'datetime' => $post->publication_date->toAtomString(),
-                'author' => $post->author->name,
-                'views' => $post->views
-            ]
+            'post' => $postCache
         ]);
     }
 }
