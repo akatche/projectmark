@@ -71,10 +71,20 @@ class PostsController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function show(Post $post)
     {
-        //
+        return Inertia::render('Post/Show', [
+            'post' => [
+                'id' => $post->id,
+                'title' => $post->title,
+                'description' => html_entity_decode($post->description),
+                'date' => $post->publication_date->toFormattedDateString(),
+                'datetime' => $post->publication_date->toAtomString(),
+                'author' => $post->author->name,
+                'views' => $post->views
+            ]
+        ]);
     }
 }

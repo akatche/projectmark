@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen">
+    <div class="flex flex-col h-screen">
         <nav class="bg-white border-b border-gray-100">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -7,7 +7,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="/dashboard">
+                            <a href="/">
                                 <jet-application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
@@ -75,9 +75,13 @@
         </nav>
 
         <!-- Page Content -->
-        <main>
+        <main class="flex-grow">
             <slot></slot>
         </main>
+
+        <footer class="p-4 text-sm font-medium leading-5 text-gray-500 hover:text-pink-900">
+            Created by Alejandro Katcheroff
+        </footer>
     </div>
 </template>
 
