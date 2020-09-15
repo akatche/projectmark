@@ -23,7 +23,7 @@ class PostsController extends Controller
 
         $posts->getCollection()->transform(function($post) {
             return [
-                'id' => $post->id,
+                'url' => $post->url,
                 'title' => $post->title,
                 'publication_date' => $post->publication_date->toDateTimeString(),
                 'views' => $post->views
@@ -57,9 +57,9 @@ class PostsController extends Controller
 
         Auth::user()->posts()->create(
             [
-                'title' => e($post->title),
-                'description' => e($post->description),
-                'publication_date' => Carbon::parse($post->publication_date),
+                'title' => e($post['title']),
+                'description' => e($post['description']),
+                'publication_date' => Carbon::now(),
                 'user_id' => \auth()->user()->id
             ]
         );

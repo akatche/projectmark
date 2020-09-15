@@ -36,6 +36,10 @@
                                         Manage Account
                                     </div>
 
+                                    <jet-dropdown-link href="/dashboard">
+                                        Dashboard
+                                    </jet-dropdown-link>
+
                                     <jet-dropdown-link href="/user/profile">
                                         Profile
                                     </jet-dropdown-link>

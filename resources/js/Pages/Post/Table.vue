@@ -38,7 +38,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap">
                             <jet-button>
-                                <inertia-link :href="route('posts.show', post.id)">
+                                <inertia-link :href="route('post.show', post.url)">
                                     <span>See Post</span>
                                 </inertia-link>
                             </jet-button>
