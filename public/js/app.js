@@ -4394,6 +4394,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     links: Array
@@ -28353,102 +28366,95 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
-            },
-            [
-              _c(
-                "table",
-                { staticClass: "min-w-full divide-y divide-gray-200" },
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    { staticClass: "bg-white divide-y divide-gray-200" },
-                    _vm._l(_vm.posts, function(post) {
-                      return _c("tr", { key: post.id }, [
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                          },
-                          [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(post.title) +
-                                "\n                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                          },
-                          [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(post.publication_date) +
-                                "\n                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                          [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(post.views) +
-                                "\n                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                          [
-                            _c(
-                              "jet-button",
-                              [
-                                _c(
-                                  "inertia-link",
-                                  {
-                                    attrs: {
-                                      href: _vm.route("posts.show", post.id)
-                                    }
-                                  },
-                                  [_c("span", [_vm._v("See Post")])]
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    }),
-                    0
-                  )
-                ]
-              )
-            ]
-          )
-        ]
-      )
+      _c("div", { staticClass: "bg-white overflow-hidden" }, [
+        _c(
+          "div",
+          { staticClass: "shadow overflow-hidden border-2 border-gray-200" },
+          [
+            _c(
+              "table",
+              { staticClass: "min-w-full divide-y divide-gray-200" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  { staticClass: "bg-white divide-y divide-gray-200" },
+                  _vm._l(_vm.posts, function(post) {
+                    return _c("tr", { key: post.id }, [
+                      _c(
+                        "td",
+                        {
+                          staticClass:
+                            "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(post.title) +
+                              "\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass:
+                            "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(post.publication_date) +
+                              "\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(post.views) +
+                              "\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                        [
+                          _c(
+                            "jet-button",
+                            [
+                              _c(
+                                "inertia-link",
+                                {
+                                  attrs: {
+                                    href: _vm.route("posts.show", post.id)
+                                  }
+                                },
+                                [_c("span", [_vm._v("See Post")])]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          ]
+        )
+      ])
     ],
     1
   )
@@ -29913,7 +29919,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-6 -mb-1 flex flex-wrap" },
+    {
+      staticClass:
+        "pt-1 pl-1 flex flex-wrap bg-white overflow-hidden shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg"
+    },
     [
       _vm._l(_vm.links, function(link, key) {
         return [
@@ -29923,24 +29932,24 @@ var render = function() {
                 {
                   key: key,
                   staticClass:
-                    "mr-1 mb-1 px-4 py-3 text-sm border rounded text-gray-400",
+                    "mr-1 mb-1 px-4 py-3 text-sm border-2 rounded text-gray-400",
                   class: { "ml-auto": link.label === "Next" }
                 },
-                [_vm._v(_vm._s(link.label))]
+                [_vm._v("\n      " + _vm._s(link.label) + "\n    ")]
               )
             : _c(
                 "inertia-link",
                 {
                   key: key,
                   staticClass:
-                    "mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500",
+                    "mr-1 mb-1 px-4 py-3 text-sm border-2 rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500",
                   class: {
                     "bg-white": link.active,
                     "ml-auto": link.label === "Next"
                   },
                   attrs: { href: link.url }
                 },
-                [_vm._v(_vm._s(link.label))]
+                [_vm._v("\n      " + _vm._s(link.label) + "\n    ")]
               )
         ]
       })

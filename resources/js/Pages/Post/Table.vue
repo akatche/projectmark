@@ -5,8 +5,8 @@
             <span class="hidden md:inline">Post</span>
         </inertia-link>
 
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="bg-white overflow-hidden">
+            <div class="shadow overflow-hidden border-2 border-gray-200">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                     <tr>
