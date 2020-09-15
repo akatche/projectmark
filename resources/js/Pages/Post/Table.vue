@@ -1,9 +1,11 @@
 <template>
     <div>
-        <inertia-link class="btn-indigo" :href="route('posts.create')">
-            <span>Create</span>
-            <span class="hidden md:inline">Post</span>
-        </inertia-link>
+        <jet-button class="mb-2">
+            <inertia-link  :href="route('posts.create')">
+                <span>Create</span>
+                <span class="hidden md:inline">Post</span>
+            </inertia-link>
+        </jet-button>
 
         <div class="bg-white overflow-hidden">
             <div class="shadow overflow-hidden border-2 border-gray-200">

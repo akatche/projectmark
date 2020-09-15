@@ -22,4 +22,7 @@ mix.js('resources/js/app.js', 'public/js')
                 ziggy: path.resolve('vendor/tightenco/ziggy/src/js/route.js'),
             },
         },
-    });
+    })
+    .version()
+    .sourceMaps();
+
