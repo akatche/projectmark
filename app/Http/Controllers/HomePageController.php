@@ -31,7 +31,6 @@ class HomePageController extends Controller
                     'date' => $post->publication_date->toFormattedDateString(),
                     'datetime' => $post->publication_date->toAtomString(),
                     'author' => $post->author->name,
-                    'views' => $post->views,
                     'url' => "/post/{$post->url}"
                 ];
             });

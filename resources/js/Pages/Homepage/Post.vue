@@ -10,10 +10,6 @@
                 <dd class="text-base leading-6 font-medium text-gray-500">
                     {{post.author}}
                 </dd>
-                <dt class="sr-only">Views</dt>
-                <dd class="text-base leading-6 font-medium text-gray-500">
-                    {{post.views}} views
-                </dd>
             </dl>
             <div class="space-y-5 xl:col-span-3">
                 <div class="space-y-6">

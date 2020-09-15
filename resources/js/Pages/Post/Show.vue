@@ -35,6 +35,10 @@
                                                     More posts from this author
                                                 </inertia-link>
                                             </dd>
+                                            <dt class="sr-only">Views</dt>
+                                            <dd>
+                                                {{post.views}} views
+                                            </dd>
                                         </dl>
                                     </li>
                                 </ul>

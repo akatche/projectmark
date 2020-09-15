@@ -95,8 +95,14 @@ class PostsController extends Controller
             ];
         });
 
+        $viewsCache = Cache::remember('post'. $post->id . '-cache', 600, function () use($post) {
+            return [
+                'views' => $post->views
+            ];
+        });
+
         return Inertia::render('Post/Show', [
-            'post' => $postCache
+            'post' => array_merge($postCache,$viewsCache)
         ]);
     }
 }
