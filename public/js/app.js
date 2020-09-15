@@ -25985,7 +25985,9 @@ var render = function() {
                     {
                       attrs: {
                         href: "/dashboard/posts",
-                        active: _vm.$page.currentRouteName == "posts"
+                        active: ["posts.index", "posts.create"].includes(
+                          _vm.$page.currentRouteName
+                        )
                       }
                     },
                     [
@@ -27568,7 +27570,7 @@ var render = function() {
           "div",
           { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" },
           [
-            _c("posts", { attrs: { posts: _vm.posts } }),
+            _c("posts", { attrs: { posts: _vm.posts.data } }),
             _vm._v(" "),
             _c("pagination", { attrs: { links: _vm.posts.links } })
           ],
@@ -44400,8 +44402,8 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Ale\test_home\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Ale\test_home\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Proyectos\projectmark\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Proyectos\projectmark\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

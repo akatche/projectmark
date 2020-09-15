@@ -19,15 +19,19 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $posts = \auth()->user()->posts()->paginate(5);
+
+        $posts->getCollection()->transform(function($post) {
+            return [
+                'id' => $post->id,
+                'title' => $post->title,
+                'publication_date' => $post->publication_date->toDateTimeString(),
+                'views' => $post->views
+            ];
+        });
+
         return Inertia::render('Post/Index', [
-            'posts' => Post::paginate(5)->transform(function ($post) {
-                return [
-                    'id' => $post->id,
-                    'title' => $post->title,
-                    'publication_date' => $post->publication_date->toDateTimeString(),
-                    'views' => $post->views
-                ];
-            }),
+            'posts' => $posts
         ]);
     }
 
