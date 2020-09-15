@@ -15,8 +15,8 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return Inertia\Inertia::render('Homepage');
+})->name('homepage');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
