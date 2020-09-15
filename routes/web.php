@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\HomePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,9 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia\Inertia::render('Homepage');
-})->name('homepage');
+Route::get('/', HomePageController::class)->name('homepage');
+
+Route::get('/post/{post}', [HomePageController::class,'show'])->name('post.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
@@ -25,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(function () {
 
     Route::resource('posts', PostsController::class)->only([
-        'index', 'create', 'store', 'show'
+        'index', 'create', 'store'
     ]);
 
 });

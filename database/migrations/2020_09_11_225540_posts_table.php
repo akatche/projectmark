@@ -20,6 +20,7 @@ class PostsTable extends Migration
             $table->dateTime('publication_date');
             $table->unsignedBigInteger('user_id');
             $table->integer('views')->default(0);
+            $table->text('url')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
