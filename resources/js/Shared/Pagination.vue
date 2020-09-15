@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-1 pl-1 flex flex-wrap bg-white overflow-hidden shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg">
+  <div v-bind:class="classObject">
     <template v-for="(link, key) in links">
       <div v-if="link.url === null"
            :key="key"
@@ -22,8 +22,14 @@
 
 <script>
 export default {
-  props: {
-    links: Array,
-  },
+    props: {
+        links: Array,
+    },
+    computed: {
+        classObject: function () {
+            //pt-1 pl-1 flex flex-wrap bg-white overflow-hidden shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg
+            return 'pt-1 pl-1 flex flex-wrap bg-white overflow-hidden';
+        }
+    }
 }
 </script>

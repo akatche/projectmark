@@ -14,8 +14,10 @@
                             <h1 class="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Latest posts</h1>
                         </div>
                         <ul class="divide-y divide-gray-200">
-                            <post v-for="post in posts" :key="post.id" :post="post"></post>
+                            <post v-for="post in posts.data" :key="post.id" :post="post"></post>
                         </ul>
+
+                        <pagination :links="posts.links" class="shadow-xl border-gray-200 rounded-b-lg"/>
                     </div>
                 </div>
             </div>
@@ -26,14 +28,16 @@
 <script>
     import HomePageLayout from './../Layouts/HomePageLayout'
     import Post from './Homepage/Post'
+    import Pagination from "./../Shared/Pagination";
 
     export default {
         components: {
             HomePageLayout,
-            Post
+            Post,
+            Pagination
         },
         props: {
-            posts: Array,
+            posts: Object,
         },
     }
 </script>

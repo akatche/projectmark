@@ -19,9 +19,9 @@ class HomePageController extends Controller
     {
         $posts = Cache::rememberForever('homepage-posts', function () {
 
-            $posts = Post::orderByDesc('publication_date')->paginate(10);
+            $posts = Post::orderByDesc('publication_date')->paginate(3);
 
-            return $posts->getCollection()->transform(function($post) {
+            $posts->getCollection()->transform(function($post) {
                 return [
                     'id' => $post->id,
                     'title' => $post->title,
@@ -33,6 +33,8 @@ class HomePageController extends Controller
                     'url' => "/post/{$post->url}"
                 ];
             });
+
+            return $posts;
 
         });
 
