@@ -6,15 +6,24 @@
                 <dd class="text-base leading-6 font-medium text-gray-500">
                     <time :datetime="post.datetime">{{post.date}}</time>
                 </dd>
+                <dt class="sr-only">Author</dt>
+                <dd class="text-base leading-6 font-medium text-gray-500">
+                    {{post.author}}
+                </dd>
+                <dt class="sr-only">Views</dt>
+                <dd class="text-base leading-6 font-medium text-gray-500">
+                    {{post.views}} views
+                </dd>
             </dl>
             <div class="space-y-5 xl:col-span-3">
                 <div class="space-y-6">
                     <h2 class="text-2xl leading-8 font-bold tracking-tight">
-                        <a class="text-gray-900" href="/tailwindcss-1-8">{{post.title}}</a>
+                        <inertia-link class="text-gray-900" :href="post.url" :aria-label="'Read' + post.title">
+                          {{post.title}}
+                        </inertia-link>
                     </h2>
-                    <div class="prose max-w-none text-gray-500">
-                        {{post.description}}
-                    </div> 
+                    <div class="prose max-w-none text-gray-500" v-html="post.description">
+                    </div>
                 </div>
                 <div class="text-base leading-6 font-medium">
                     <inertia-link class="text-teal-500 hover:text-teal-600" :href="post.url" :aria-label="'Read' + post.title">

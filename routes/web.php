@@ -17,7 +17,7 @@ use App\Http\Controllers\HomePageController;
 
 Route::get('/', HomePageController::class)->name('homepage');
 
-Route::get('/post/{post}', [HomePageController::class,'show'])->name('post.show');
+Route::get('/post/{post}', [PostsController::class,'show'])->name('post.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');

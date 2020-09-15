@@ -25,13 +25,13 @@ class HomePageController extends Controller
                 'datetime' => $post->publication_date->toAtomString(),
                 'author' => $post->author->name,
                 'views' => $post->views,
-                'url' => url("/posts/{$post->url}")
+                'url' => "/post/{$post->url}"
             ];
         });
 
         return Inertia::render('Homepage', [
             'posts' => function () use($posts) {
-                return $posts;
+                return $posts->sortBy('id');
             }
         ]);
     }

@@ -30,8 +30,8 @@ class ImportPosts implements ShouldQueue
 
         $posts->each(function ($post) use($admin) {
             Post::create([
-                'title' => $post['title'],
-                'description' => $post['description'],
+                'title' => e($post['title']),
+                'description' => e($post['description']),
                 'publication_date' => Carbon::parse($post['publication_date']),
                 'user_id' => $admin->id
             ]);

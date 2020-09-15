@@ -53,13 +53,15 @@ class PostsController extends Controller
      */
     public function store(StoreBlogPost $request)
     {
+        $post = $request->validated();
+
         Auth::user()->posts()->create(
-            array_merge(
-                $request->validated(),
-                [
-                    'publication_date' => Carbon::now()
-                ]
-            )
+            [
+                'title' => e($post->title),
+                'description' => e($post->description),
+                'publication_date' => Carbon::parse($post->publication_date),
+                'user_id' => \auth()->user()->id
+            ]
         );
 
         return Redirect::route('posts.index')->with('success', 'Post created.');
