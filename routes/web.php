@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\HomePageController;
 Route::get('/', HomePageController::class)->name('homepage');
 
 Route::get('/post/{post}', [PostsController::class,'show'])->name('post.show');
+
+Route::get('/author/{author}', AuthorController::class)->name('author');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');

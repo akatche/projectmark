@@ -28,10 +28,12 @@
                                     <li class="flex items-center space-x-2">
                                         <dl class="text-sm font-medium leading-5 whitespace-no-wrap">
                                             <dt class="sr-only">Name</dt>
-                                            <dd class="text-gray-900">{{post.author}}</dd>
+                                            <dd class="text-gray-900">{{post.author.name}}</dd>
                                             <dt class="sr-only">More Posts</dt>
                                             <dd>
-                                                <a href="/" class="text-teal-500 hover:underline">More posts from this author</a>
+                                                <inertia-link :href="'/author/'+post.author.id" class="text-teal-500 hover:underline">
+                                                    More posts from this author
+                                                </inertia-link>
                                             </dd>
                                         </dl>
                                     </li>

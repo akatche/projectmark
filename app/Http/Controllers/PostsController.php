@@ -84,7 +84,7 @@ class PostsController extends Controller
               'description' => html_entity_decode($post->description),
               'date' => $post->publication_date->toFormattedDateString(),
               'datetime' => $post->publication_date->toAtomString(),
-              'author' => $post->author->name,
+              'author' => $post->author->only(['id','name']),
               'views' => $post->views
           ];
 
