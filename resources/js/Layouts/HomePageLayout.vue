@@ -79,7 +79,7 @@
             <slot></slot>
         </main>
 
-        <footer class="p-4 text-sm font-medium leading-5 text-gray-500 hover:text-pink-900 text-center">
+        <footer class="p-4 text-sm font-medium leading-5 text-gray-500 hover:text-indigo-400 text-center">
             Created by Alejandro Katcheroff
         </footer>
     </div>
