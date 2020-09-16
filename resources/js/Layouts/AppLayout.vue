@@ -124,7 +124,6 @@
 
         <!-- Page Content -->
         <main class="flex-grow bg-gray-100">
-<!--            <flash-messages />-->
             <slot></slot>
         </main>
 
@@ -145,7 +144,6 @@
     import JetDropdownLink from './../Jetstream/DropdownLink'
     import JetNavLink from './../Jetstream/NavLink'
     import JetResponsiveNavLink from './../Jetstream/ResponsiveNavLink'
-    import FlashMessages from "../Shared/FlashMessages";
 
     export default {
         components: {
@@ -154,8 +152,7 @@
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
-            JetResponsiveNavLink,
-            FlashMessages
+            JetResponsiveNavLink
         },
 
         data() {

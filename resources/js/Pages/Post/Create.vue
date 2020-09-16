@@ -21,13 +21,13 @@
                     <div class="col-span-6 sm:col-span-4">
                         <jet-label for="title" value="Title" />
                         <jet-input id="title" type="text" class="mt-1 block w-full" v-model="form.title"/>
-                        <jet-input-error v-if="errors.title" :message="errors.title" class="mt-2" />
+                        <jet-input-error :message="errors.title" class="mt-2" />
                     </div>
 
                     <div class="col-span-10">
                         <jet-label for="description" value="Description" />
                         <VueTrix inputId="editor1" v-model="form.description" placeholder="Enter your post description..."/>
-                        <jet-input-error v-if="errors.description" :message="errors.description" class="mt-2" />
+                        <jet-input-error :message="errors.description" class="mt-2" />
                     </div>
                 </template>
 
@@ -73,19 +73,34 @@
 
         data() {
             return {
-                sending: false,
-                form: {
-                    title: null,
-                    description: null
-                },
+                form: this.$inertia.form({
+                    title: '',
+                    description: ''
+                }, {
+                    bag: 'createNewPost',
+                }),
             }
         },
 
+        // data() {
+        //     return {
+        //         sending: false,
+        //         form: {
+        //             title: null,
+        //             description: null
+        //         },
+        //     }
+        // },
+
         methods: {
             createNewPost() {
-                this.sending = true
-                this.$inertia.post(this.route('posts.store'), this.form)
-                    .then(() => this.sending = false)
+                // this.sending = true
+                // this.$inertia.post(this.route('posts.store'), this.form)
+                //     .then(() => this.sending = false)
+
+                this.form.post(this.route('posts.store'), {
+                    preserveScroll: true
+                });
             },
         },
     }
