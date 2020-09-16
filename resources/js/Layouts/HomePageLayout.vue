@@ -40,6 +40,10 @@
                                         Dashboard
                                     </jet-dropdown-link>
 
+                                    <jet-dropdown-link href="/dashboard/posts">
+                                        Posts
+                                    </jet-dropdown-link>
+
                                     <jet-dropdown-link href="/user/profile">
                                         Profile
                                     </jet-dropdown-link>
