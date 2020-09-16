@@ -12,7 +12,8 @@
                     :key="key"
                     class="mr-1 mb-1 px-4 py-3 text-sm border-2 rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
                     :class="{ 'bg-white': link.active, 'ml-auto': link.label === 'Next' }"
-                    :href="correctedUrl(link.url)"
+                    :href="link.url"
+                    @click="$emit('changePageNumber', key)"
       >
         {{ link.label }}
       </inertia-link>

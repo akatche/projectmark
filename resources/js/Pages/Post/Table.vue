@@ -17,7 +17,9 @@
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Publication Date
-                            <button class="focus:outline-none" @click="changeOrdering"><sort-icon :order="order"/></button>
+                            <button class="focus:outline-none" @click="changeOrdering">
+                                <sort-icon :order="params.order"/>
+                            </button>
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Views
@@ -52,8 +54,8 @@
 
         <pagination
             :links="posts.links"
-            :params="''"
             class="shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg"
+            @on:changePageNumber="updatePageNumber"
         />
     </div>
 </template>
@@ -76,18 +78,21 @@
         },
         data() {
             return {
-                order: 'desc',
+                params:{
+                    page: 1,
+                    order: 'desc'
+                }
             }
         },
         methods: {
             changeOrdering() {
 
-                this.order = this.order === 'desc' ? 'asc' : 'desc';
+                this.params.order = this.params.order === 'desc' ? 'asc' : 'desc';
 
                 this.$inertia.replace(route(route().current(), route().params), {
                     method: 'get',
                     data: {
-                        order: this.order
+                        order: this.params.order
                     },
                     replace: false,
                     preserveState: true,
@@ -95,6 +100,11 @@
                     only: ['posts'],
                 })
             },
+            updatePageNumber: function (pageNumber) {
+                console.log("page no");
+                console.log(pageNumber);
+                this.params.number = pageNumber;
+            }
         }
     }
 </script>
