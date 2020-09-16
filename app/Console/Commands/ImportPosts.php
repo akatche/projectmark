@@ -39,7 +39,7 @@ class ImportPosts extends Command
     {
         $this->info('Importing posts...');
 
-        \App\Jobs\ImportPosts::dispatchSync();
+        \App\Jobs\ImportPosts::dispatch();
 
         $this->info('Posts have been correctly imported into the platform.');
     }
