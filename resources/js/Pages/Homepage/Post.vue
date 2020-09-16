@@ -1,5 +1,5 @@
 <template>
-    <li class="py-12">
+    <li class="py-12 px-4">
         <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
             <dl>
                 <dt class="sr-only">Published on</dt>

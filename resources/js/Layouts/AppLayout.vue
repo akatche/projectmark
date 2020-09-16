@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="flex flex-col h-screen bg-gray-100">
         <nav class="bg-white border-b border-gray-100">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -193,10 +193,14 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main class="flex-grow">
             <flash-messages />
             <slot></slot>
         </main>
+
+        <footer class="p-4 text-sm font-medium leading-5 text-gray-500 hover:text-indigo-400 text-center">
+            Created by Alejandro Katcheroff
+        </footer>
 
         <!-- Modal Portal -->
         <portal-target name="modal" multiple>
