@@ -123,8 +123,8 @@
         </header>
 
         <!-- Page Content -->
-        <main class="flex-grow">
-            <flash-messages />
+        <main class="flex-grow bg-gray-100">
+<!--            <flash-messages />-->
             <slot></slot>
         </main>
 

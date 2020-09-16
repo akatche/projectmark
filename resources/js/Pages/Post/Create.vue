@@ -21,14 +21,13 @@
                     <div class="col-span-6 sm:col-span-4">
                         <jet-label for="title" value="Title" />
                         <jet-input id="title" type="text" class="mt-1 block w-full" v-model="form.title"/>
-                        <jet-input-error :message="form.error('title')" class="mt-2" />
+                        <jet-input-error v-if="errors.title" :message="errors.title" class="mt-2" />
                     </div>
 
-                    <!-- Email -->
                     <div class="col-span-10">
                         <jet-label for="description" value="Description" />
                         <VueTrix inputId="editor1" v-model="form.description" placeholder="Enter your post description..."/>
-                        <jet-input-error :message="form.error('description')" class="mt-2" />
+                        <jet-input-error v-if="errors.description" :message="errors.description" class="mt-2" />
                     </div>
                 </template>
 
@@ -37,7 +36,7 @@
                         Published
                     </jet-action-message>
 
-                    <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
                         Publish Post
                     </jet-button>
                 </template>
@@ -68,22 +67,25 @@
             VueTrix
         },
 
+        props: {
+            errors: Object,
+        },
+
         data() {
             return {
-                form: this.$inertia.form({
-                    title: this.title,
-                    description: this.description,
-                }, {
-                    bag: 'createNewPost'
-                })
+                sending: false,
+                form: {
+                    title: null,
+                    description: null
+                },
             }
         },
 
         methods: {
             createNewPost() {
-                this.form.post('/dashboard/posts', {
-                    preserveScroll: true
-                });
+                this.sending = true
+                this.$inertia.post(this.route('posts.store'), this.form)
+                    .then(() => this.sending = false)
             },
         },
     }
