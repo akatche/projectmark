@@ -20,9 +20,9 @@ class AuthorController extends Controller
 
         $currentPage = request()->get('page',1);
 
-        $authorPosts = Cache::rememberForever('author-posts'. '_page_' . $currentPage, function () {
+        $authorPosts = Cache::rememberForever('author-posts-'. $author->id .'_page_' . $currentPage, function () use($author) {
 
-            $posts = Post::orderByDesc('publication_date')->paginate(3);
+            $posts = $author->posts()->orderByDesc('publication_date')->paginate(3);
 
             $posts->getCollection()->transform(function($post) {
                 return [

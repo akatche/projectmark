@@ -27,7 +27,7 @@
             Pagination
         },
         props: {
-            posts: Array,
+            posts: Object,
         },
     }
 </script>
