@@ -1,7 +1,7 @@
 <template>
     <div>
         <jet-button class="mb-2">
-            <inertia-link  :href="route('posts.create')">
+            <inertia-link :href="route('posts.create')">
                 <span>Create</span>
                 <span class="hidden md:inline">Post</span>
             </inertia-link>
