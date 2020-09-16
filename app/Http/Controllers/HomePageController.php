@@ -19,7 +19,7 @@ class HomePageController extends Controller
     {
         $currentPage = request()->get('page',1);
 
-        $posts = Cache::rememberForever('homepage-posts'. '_page_' . $currentPage, function () {
+        $posts = Cache::tags('homepage_posts')->rememberForever('homepage-posts'. '_page_' . $currentPage, function () {
 
             $posts = Post::orderByDesc('publication_date')->paginate(3);
 

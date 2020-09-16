@@ -72,6 +72,8 @@ class PostsController extends Controller
             ]
         );
 
+        Cache::tags('homepage_posts')->flush();
+
         return Redirect::route('posts.index')->with('success', 'Post created.');
     }
 
