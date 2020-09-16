@@ -37,7 +37,7 @@
                                             </dd>
                                             <dt class="sr-only">Views</dt>
                                             <dd>
-                                                {{post.views}} views
+                                                {{post.views}} <span v-if="post.views>1">views</span><span v-else>view</span>
                                             </dd>
                                         </dl>
                                     </li>
