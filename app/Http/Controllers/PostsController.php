@@ -22,26 +22,31 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = \auth()->user()->posts()->paginate(5);
+        $order = request()->get('order','desc');
+
+        $posts = \auth()->user()->posts()->orderBy('publication_date',$order)->paginate(5);
 
         $posts->getCollection()->transform(function($post) {
             return [
                 'url' => $post->url,
                 'title' => $post->title,
                 'publication_date' => $post->publication_date->toDateTimeString(),
+                'publication_date_timestamp' => $post->publication_date->timestamp,
                 'views' => $post->views
             ];
         });
 
         return Inertia::render('Post/Index', [
-            'posts' => $posts
+            'posts' => function() use($posts) {
+                return $posts;
+            }
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
@@ -79,8 +84,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-
-        //Increment views using a queued job so it doesn´t afect loading time
+        //Increment views using a queued job so it doesn´t affect loading time
         IncrementPostViews::dispatch($post);
 
         $postCache = Cache::rememberForever('post'. $post->id, function () use($post) {

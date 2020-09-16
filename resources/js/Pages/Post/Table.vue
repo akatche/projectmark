@@ -17,6 +17,7 @@
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Publication Date
+                            <button class="focus:outline-none" @click="changeOrdering"><sort-icon :order="order"/></button>
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Views
@@ -54,14 +55,38 @@
 <script>
     import AppLayout from './../../Layouts/AppLayout'
     import JetButton from './../../Jetstream/Button'
+    import SortIcon from './../../Shared/SortIcon'
 
     export default {
         components: {
             AppLayout,
-            JetButton
+            JetButton,
+            SortIcon,
         },
         props: {
             posts: Array,
         },
+        data() {
+            return {
+                order: 'desc',
+            }
+        },
+        methods: {
+            changeOrdering() {
+
+                this.order = this.order === 'desc' ? 'asc' : 'desc';
+
+                this.$inertia.replace(route(route().current(), route().params), {
+                    method: 'get',
+                    data: {
+                        order: this.order
+                    },
+                    replace: false,
+                    preserveState: true,
+                    preserveScroll: true,
+                    only: ['posts'],
+                })
+            },
+        }
     }
 </script>
