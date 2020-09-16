@@ -72,6 +72,57 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Responsive Navigation Menu -->
+            <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+
+                <!-- Responsive Settings Options -->
+                <div class="pt-4 pb-1 border-t border-gray-200 bg-gray-100" v-if="$page.auth.user!=null">
+                    <div class="flex items-center px-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" :src="$page.user.profile_photo_url" :alt="$page.user.name" />
+                        </div>
+
+                        <div class="ml-3">
+                            <div class="font-medium text-base text-gray-800">{{ $page.user.name }}</div>
+                            <div class="font-medium text-sm text-gray-500">{{ $page.user.email }}</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 space-y-1">
+
+                        <jet-responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
+                            Dashboard
+                        </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link href="/dashboard/posts" :active="$page.currentRouteName == 'posts.index'">
+                            Posts
+                        </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link href="/user/profile" :active="$page.currentRouteName == 'profile.show'">
+                            Profile
+                        </jet-responsive-nav-link>
+
+                        <!-- Authentication -->
+                        <form method="POST" @submit.prevent="logout">
+                            <jet-responsive-nav-link as="button">
+                                Logout
+                            </jet-responsive-nav-link>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-4 border-t border-b border-gray-200 bg-gray-100" v-else>
+                    <div class="mt-3 space-y-1">
+                        <jet-responsive-nav-link as="button">
+                            <a href="/login" class="px-1 pt-1 text-sm font-medium leading-5 text-gray-900 hover:underline">Login</a>
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link as="button">
+                            <a href="/register" class="text-sm font-medium leading-5 text-gray-900 hover:underline">Register</a>
+                        </jet-responsive-nav-link>
+                    </div>
+                </div>
+            </div>
         </nav>
 
         <!-- Page Content -->
@@ -119,10 +170,10 @@
             },
         },
 
-        // computed: {
-        //     path() {
-        //         return window.location.pathname
-        //     }
-        // }
+        computed: {
+            path() {
+                return window.location.pathname
+            }
+        }
     }
 </script>
