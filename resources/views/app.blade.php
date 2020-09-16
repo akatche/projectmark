@@ -10,7 +10,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -18,7 +18,6 @@
         @routes
 
         <!-- Scripts -->
-        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>--}}
         <script src="{{ mix('/js/app.js') }}" defer></script>
 
     </head>
