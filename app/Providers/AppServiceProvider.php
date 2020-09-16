@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
                     'success' => Session::get('success'),
                     'error' => Session::get('error'),
                 ];
-            },
+            }
         ]);
     }
 

@@ -27,7 +27,7 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr v-for="post in posts" :key="post.id">
+                    <tr v-for="post in posts.data" :key="post.id">
                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                             {{ post.title }}
                         </td>
@@ -49,6 +49,12 @@
                 </table>
             </div>
         </div>
+
+        <pagination
+            :links="posts.links"
+            :params="''"
+            class="shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg"
+        />
     </div>
 </template>
 
@@ -56,15 +62,17 @@
     import AppLayout from './../../Layouts/AppLayout'
     import JetButton from './../../Jetstream/Button'
     import SortIcon from './../../Shared/SortIcon'
+    import Pagination from "../../Shared/Pagination";
 
     export default {
         components: {
             AppLayout,
             JetButton,
             SortIcon,
+            Pagination
         },
         props: {
-            posts: Array,
+            posts: Object
         },
         data() {
             return {
