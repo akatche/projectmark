@@ -82,24 +82,11 @@
             }
         },
 
-        // data() {
-        //     return {
-        //         sending: false,
-        //         form: {
-        //             title: null,
-        //             description: null
-        //         },
-        //     }
-        // },
-
         methods: {
             createNewPost() {
-                // this.sending = true
-                // this.$inertia.post(this.route('posts.store'), this.form)
-                //     .then(() => this.sending = false)
-
                 this.form.post(this.route('posts.store'), {
-                    preserveScroll: true
+                    preserveScroll: true,
+                    showProgress: true,
                 });
             },
         },
