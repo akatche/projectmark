@@ -72,7 +72,8 @@ class PostsController extends Controller
             ]
         );
 
-        Cache::tags('homepage_posts')->flush();
+        //Flush cache for homepage posts and also from the author posts page
+        Cache::tags(['homepage_posts','author_posts_' . \auth()->user()->id])->flush();
 
         return Redirect::route('posts.index')->with('success', 'Post created.');
     }

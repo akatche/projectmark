@@ -17,10 +17,9 @@ class AuthorController extends Controller
      */
     public function __invoke(User $author)
     {
-
         $currentPage = request()->get('page',1);
 
-        $authorPosts = Cache::rememberForever('author-posts-'. $author->id .'_page_' . $currentPage, function () use($author) {
+        $authorPosts = Cache::tags('author_posts_' . $author->id)->rememberForever('author-posts-'. $author->id .'_page_' . $currentPage, function () use($author) {
 
             $posts = $author->posts()->orderByDesc('publication_date')->paginate(3);
 
