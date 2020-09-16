@@ -90,7 +90,6 @@
                     </div>
 
                     <div class="mt-3 space-y-1">
-
                         <jet-responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
                             Dashboard
                         </jet-responsive-nav-link>
