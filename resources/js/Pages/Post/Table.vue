@@ -18,7 +18,7 @@
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Publication Date
                             <button class="focus:outline-none" @click="changeOrdering">
-                                <sort-icon :order="urlParams.order"/>
+                                <sort-icon :order="urlParams.publication_date"/>
                             </button>
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -86,19 +86,19 @@
         data() {
             return {
                 urlParams:{
-                    order: 'desc',
+                    publication_date: 'desc',
                     page : 1
                 }
             }
         },
         methods: {
             changeOrdering() {
-                this.urlParams.order = this.urlParams.order === 'desc' ? 'asc' : 'desc';
+                this.urlParams.publication_date = this.urlParams.publication_date === 'desc' ? 'asc' : 'desc';
 
                 this.$inertia.replace(route(route().current(), route().params), {
                     method: 'get',
                     data: {
-                        order: this.urlParams.order,
+                        publication_date: this.urlParams.publication_date,
                         page: this.urlParams.page
                     },
                     replace: false,

@@ -22,9 +22,18 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $order = request()->get('order','desc');
+        $posts = \auth()->user()->posts();
 
-        $posts = \auth()->user()->posts()->orderBy('publication_date',$order)->paginate(5);
+
+        if(request()->has('publication_date')){
+            $posts = $posts->orderBy('publication_date',request()->get('publication_date','desc'));
+        }
+
+        if(request()->has('views')){
+            $posts = $posts->orderBy('views',request()->get('views'));
+        }
+
+        $posts = $posts->paginate(5);
 
         $posts->getCollection()->transform(function($post) {
             return [

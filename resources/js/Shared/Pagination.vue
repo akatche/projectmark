@@ -49,7 +49,7 @@
               })
           },
           correctedUrl(url) {
-              return url + '&order=' + this.params.order;
+              return url + '&publication_date=' + this.params.publication_date;
           },
       },
   }
