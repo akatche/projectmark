@@ -26,6 +26,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "normalize-url": "^5.1.0",
+        "query-string": "^6.13.2",
         "vue-trix": "^1.1.11"
     }
 }

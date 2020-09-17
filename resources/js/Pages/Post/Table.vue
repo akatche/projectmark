@@ -54,8 +54,8 @@
 
         <pagination
             :links="posts.links"
+            :params="params"
             class="shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg"
-            @on:changePageNumber="updatePageNumber"
         />
     </div>
 </template>
@@ -79,14 +79,12 @@
         data() {
             return {
                 params:{
-                    page: 1,
                     order: 'desc'
                 }
             }
         },
         methods: {
             changeOrdering() {
-
                 this.params.order = this.params.order === 'desc' ? 'asc' : 'desc';
 
                 this.$inertia.replace(route(route().current(), route().params), {
@@ -99,11 +97,6 @@
                     preserveScroll: true,
                     only: ['posts'],
                 })
-            },
-            updatePageNumber: function (pageNumber) {
-                console.log("page no");
-                console.log(pageNumber);
-                this.params.number = pageNumber;
             }
         }
     }
