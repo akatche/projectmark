@@ -5,6 +5,15 @@ TODO
 -Change dashboard look
 -Add cypress tests
 
+-See index posts (cypress)
+-Create post (cypress)
+	-Go to page from post page
+	-see validations
+	-after published, go to post index and see it first
+-Homepage (cypress)
+-Post detail (cypress)
+-Author detail (cypress)
+
 -How to install it
 
 -Rename .env.example to .env 
