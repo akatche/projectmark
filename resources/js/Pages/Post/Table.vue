@@ -16,13 +16,20 @@
                             Title
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Publication Date
-                            <button class="focus:outline-none" @click="changeOrdering">
-                                <sort-icon :order="urlParams.publication_date"/>
-                            </button>
+                            <sort-icon
+                                :params="urlParams"
+                                :column="'publication_date'"
+                            >
+                                Publication Date
+                            </sort-icon>
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Views
+                            <sort-icon
+                                :params="urlParams"
+                                :column="'views'"
+                            >
+                                Views
+                            </sort-icon>
                         </th>
                         <th class="px-6 py-3 bg-gray-50">
                         </th>
@@ -77,35 +84,38 @@
         props: {
             posts: Object
         },
-        mounted () {
-            let self = this;
+        mounted() {
+            const queryString = require('query-string');
+            const parsedUrl = queryString.parse(location.search);
+            const columns = ['publication_date','views'];
+
+            columns.forEach(column => {
+                if(column in parsedUrl){
+                    this.urlParams.column = column;
+                    this.urlParams.order = parsedUrl[column];
+                }
+            });
+
+            if('page' in parsedUrl){
+                this.urlParams.page = parsedUrl.page;
+            }
+        },
+        created () {
             EventBus.$on('new_page_value', (payload) => {
-                self.urlParams.page = payload.page;
+                this.urlParams.page = payload.page;
+            });
+            EventBus.$on('new_sort_value', (payload) => {
+                this.urlParams.order = payload.order;
+                this.urlParams.column = payload.column;
             });
         },
         data() {
             return {
                 urlParams:{
-                    publication_date: 'desc',
-                    page : 1
+                    page : 1,
+                    column: 'publication_date',
+                    order: 'desc'
                 }
-            }
-        },
-        methods: {
-            changeOrdering() {
-                this.urlParams.publication_date = this.urlParams.publication_date === 'desc' ? 'asc' : 'desc';
-
-                this.$inertia.replace(route(route().current(), route().params), {
-                    method: 'get',
-                    data: {
-                        publication_date: this.urlParams.publication_date,
-                        page: this.urlParams.page
-                    },
-                    replace: false,
-                    preserveState: true,
-                    preserveScroll: true,
-                    only: ['posts'],
-                })
             }
         }
     }

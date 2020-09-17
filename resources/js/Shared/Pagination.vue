@@ -22,8 +22,6 @@
 </template>
 
 <script>
-  import queryString from 'query-string';
-  import normalizeUrl from 'normalize-url';
   import EventBus from './../eventbus'
 
   export default {
@@ -49,7 +47,7 @@
               })
           },
           correctedUrl(url) {
-              return url + '&publication_date=' + this.params.publication_date;
+              return url + '&'+this.params.column+'=' + this.params.order;
           },
       },
   }
