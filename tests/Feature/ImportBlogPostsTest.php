@@ -60,7 +60,7 @@ class ImportBlogPostsTest extends TestCase
      * @test
      * @return void
      */
-    public function commandSendsJobToQueue()
+    public function commandSendsImportPostsJobToTheQueue()
     {
         $this->fakeUrlData();
 
