@@ -24,13 +24,14 @@ class PostsController extends Controller
     {
         $posts = \auth()->user()->posts();
 
+        if(request()->has('views')){
+            $posts = $posts->orderBy('views',request()->get('views'));
+        }
 
         if(request()->has('publication_date')){
             $posts = $posts->orderBy('publication_date',request()->get('publication_date','desc'));
-        }
-
-        if(request()->has('views')){
-            $posts = $posts->orderBy('views',request()->get('views'));
+        }else{
+            $posts = $posts->orderBy('publication_date','desc');
         }
 
         $posts = $posts->paginate(5);
