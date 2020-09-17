@@ -12,7 +12,8 @@
                     :key="key"
                     class="mr-1 mb-1 px-4 py-3 text-sm border-2 rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
                     :class="{ 'bg-white': link.active, 'ml-auto': link.label === 'Next' }"
-                    :href="correctedUrl(link.url)"
+                    @click.prevent="goToLink(link.url)"
+                    :href="''"
       >
         {{ link.label }}
       </inertia-link>
@@ -23,6 +24,7 @@
 <script>
   import queryString from 'query-string';
   import normalizeUrl from 'normalize-url';
+  import EventBus from './../eventbus'
 
   export default {
       props: {
@@ -35,21 +37,19 @@
           }
       },
       methods: {
+          goToLink(url) {
+              let urlWithParams = this.correctedUrl(url);
+
+              this.$inertia.visit(urlWithParams, {
+                  method: 'get',
+              }).then(() => {
+                  const queryString = require('query-string');
+                  const parsed = queryString.parse(location.search);
+                  EventBus.$emit('new_page_value', parsed);
+              })
+          },
           correctedUrl(url) {
-
-              console.log("url");
-              console.log(url);
-
-              const parsed = normalizeUrl(url,{
-                  removeQueryParameters:['page']
-              });
-
-              console.log("url normalized");
-              console.log(parsed);
-
-              const mergedUrl = Object.assign(this.params,parsed);
-              //return location.pathname + '?' +queryString.stringify(mergedUrl);
-              return url;
+              return url + '&order=' + this.params.order;
           },
       },
   }

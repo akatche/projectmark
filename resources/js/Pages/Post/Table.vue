@@ -18,7 +18,7 @@
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Publication Date
                             <button class="focus:outline-none" @click="changeOrdering">
-                                <sort-icon :order="params.order"/>
+                                <sort-icon :order="urlParams.order"/>
                             </button>
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -54,7 +54,7 @@
 
         <pagination
             :links="posts.links"
-            :params="params"
+            :params="urlParams"
             class="shadow-xl border-b-2 border-r-2 border-l-2 border-gray-200 rounded-b-lg"
         />
     </div>
@@ -65,6 +65,7 @@
     import JetButton from './../../Jetstream/Button'
     import SortIcon from './../../Shared/SortIcon'
     import Pagination from "../../Shared/Pagination";
+    import EventBus from './../../eventbus'
 
     export default {
         components: {
@@ -76,21 +77,29 @@
         props: {
             posts: Object
         },
+        mounted () {
+            let self = this;
+            EventBus.$on('new_page_value', (payload) => {
+                self.urlParams.page = payload.page;
+            });
+        },
         data() {
             return {
-                params:{
-                    order: 'desc'
+                urlParams:{
+                    order: 'desc',
+                    page : 1
                 }
             }
         },
         methods: {
             changeOrdering() {
-                this.params.order = this.params.order === 'desc' ? 'asc' : 'desc';
+                this.urlParams.order = this.urlParams.order === 'desc' ? 'asc' : 'desc';
 
                 this.$inertia.replace(route(route().current(), route().params), {
                     method: 'get',
                     data: {
-                        order: this.params.order
+                        order: this.urlParams.order,
+                        page: this.urlParams.page
                     },
                     replace: false,
                     preserveState: true,
