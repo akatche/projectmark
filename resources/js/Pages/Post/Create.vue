@@ -32,11 +32,7 @@
                 </template>
 
                 <template #actions>
-                    <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                        Published
-                    </jet-action-message>
-
-                    <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
+                    <jet-button :class="{ 'opacity-25': sending }" :disabled="sending" type="submit">
                         Publish Post
                     </jet-button>
                 </template>
@@ -73,21 +69,22 @@
 
         data() {
             return {
-                form: this.$inertia.form({
-                    title: '',
-                    description: ''
-                }, {
-                    bag: 'createNewPost',
-                }),
+                sending: false,
+                form: {
+                    title: null,
+                    description: null
+                },
             }
         },
 
         methods: {
             createNewPost() {
-                this.form.post(this.route('posts.store'), {
-                    preserveScroll: true,
-                    showProgress: true,
-                });
+                this.sending = true;
+                this.$inertia.post(this.route('posts.store'), this.form)
+                    .then
+                    (
+                        () => this.sending = false
+                    )
             },
         },
     }
