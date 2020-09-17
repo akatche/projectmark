@@ -1,5 +1,10 @@
 ## About Laravel
 
+TODO
+-Change app logo
+-Change dashboard look
+-Add cypress tests
+
 -How to install it
 
 -Rename .env.example to .env 
