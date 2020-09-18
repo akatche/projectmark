@@ -17,7 +17,7 @@ php artisan migrate --seed
 php artisan ziggy:generate "resources/js/ziggy.js"
 php artisan queue:work (in a separate terminal)
 php artisan blog:import-posts
-php artisan optimize
+php artisan optimize (please wait until the queue process the import posts job)
 ```
 - NPM Installation
 ```console
