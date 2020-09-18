@@ -36,6 +36,13 @@
       },
       methods: {
           goToLink(url) {
+
+              if(typeof this.params == 'undefined'){
+                  this.$inertia.visit(url, {
+                      method: 'get',
+                  });
+              }
+
               let urlWithParams = this.correctedUrl(url);
 
               this.$inertia.visit(urlWithParams, {
