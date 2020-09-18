@@ -1,10 +1,5 @@
 ## About Laravel
 
-TODO
--Change app logo *done
--Change dashboard look
--Add cypress tests
-
 -See index posts (cypress)
 -Create post (cypress)
 	-Go to page from post page
@@ -29,6 +24,7 @@ TODO
 -php artisan optimize
 -npm install
 -npm run production
+-npm run cy:run (to run cypress tests headless)
 
 
 Run Feature tests (phpunit)

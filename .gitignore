@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/cypress/videos
 .env
 .env.backup
 .phpunit.result.cache

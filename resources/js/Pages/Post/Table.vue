@@ -1,7 +1,7 @@
 <template>
     <div>
         <jet-button class="mb-2">
-            <inertia-link :href="route('posts.create')">
+            <inertia-link :href="route('posts.create')" data-cy="create-posts-button">
                 <span>Create</span>
                 <span class="hidden md:inline">Post</span>
             </inertia-link>
@@ -36,7 +36,7 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr v-for="post in posts.data" :key="post.id">
+                    <tr v-for="(post,index) in posts.data" :key="post.id">
                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                             {{ post.title }}
                         </td>
@@ -47,7 +47,7 @@
                             {{ post.views }}
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap">
-                            <jet-button>
+                            <jet-button :data-cy="'post-detail-'+index">
                                 <inertia-link :href="route('post.show', post.url)">
                                     <span>See Post</span>
                                 </inertia-link>

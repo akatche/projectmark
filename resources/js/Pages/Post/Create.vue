@@ -26,13 +26,13 @@
 
                     <div class="col-span-10">
                         <jet-label for="description" value="Description" />
-                        <VueTrix inputId="editor1" v-model="form.description" placeholder="Enter your post description..."/>
+                        <VueTrix id="editor" v-model="form.description" placeholder="Enter your post description..."/>
                         <jet-input-error :message="errors.description" class="mt-2" />
                     </div>
                 </template>
 
                 <template #actions>
-                    <jet-button :class="{ 'opacity-25': sending }" :disabled="sending" type="submit">
+                    <jet-button :class="{ 'opacity-25': sending }" :disabled="sending" type="submit" data-cy="publish-post">
                         Publish Post
                     </jet-button>
                 </template>
