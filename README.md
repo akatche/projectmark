@@ -27,6 +27,7 @@ npm run production
 
 ### Running E2E tests
 Before running E2E tests please check that are more than 4 posts so the pagination tests can properly work.
+Also, update baseUrl in cypress.json to suit your environment
 
 Headless mode
 ```console
