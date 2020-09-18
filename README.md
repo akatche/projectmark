@@ -15,9 +15,9 @@ php artisan key:generate
 ```console
 php artisan migrate --seed 
 php artisan ziggy:generate "resources/js/ziggy.js"
-php artisan optimize
 php artisan queue:work (in a separate terminal)
 php artisan blog:import-posts
+php artisan optimize
 ```
 - NPM Installation
 ```console
