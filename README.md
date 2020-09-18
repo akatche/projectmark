@@ -2,6 +2,7 @@
 
 - Rename .env.example to .env 
 - Change APP_URL, DB_DATABASE, DB_USERNAME, DB_PASSWORD to suit your environment
+- Please use Redis or Memcached in CACHE_DRIVER and QUEUE_CONNECTION
 
 Run commands in this following order
 
