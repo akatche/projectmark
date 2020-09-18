@@ -26,6 +26,8 @@ npm run production
 ```
 
 ### Running E2E tests
+Before running E2E tests please check that are more than 4 posts so the pagination tests can properly work.
+
 Headless mode
 ```console
 npm run cy:run
