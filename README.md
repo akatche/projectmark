@@ -1,7 +1,7 @@
 ## About Laravel
 
 TODO
--Change app logo
+-Change app logo *done
 -Change dashboard look
 -Add cypress tests
 
