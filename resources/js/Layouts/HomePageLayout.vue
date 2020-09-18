@@ -7,14 +7,14 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="/">
+                            <a href="/" data-cy="logo">
                                 <jet-application-mark class="h-20" />
                             </a>
                         </div>
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <jet-nav-link href="/" :active="$page.currentRouteName == 'homepage'">
+                            <jet-nav-link href="/" :active="$page.currentRouteName == 'homepage'" data-cy="home-link">
                                 Home
                             </jet-nav-link>
                         </div>
@@ -59,8 +59,8 @@
                                 </template>
                             </jet-dropdown>
                             <div v-else>
-                                <a href="/login" class="px-1 pt-1 text-sm font-medium leading-5 text-gray-900 hover:underline">Login</a>
-                                <a href="/register" class="text-sm font-medium leading-5 text-gray-900 hover:underline">Register</a>
+                                <a href="/login" class="px-1 pt-1 text-sm font-medium leading-5 text-gray-900 hover:underline" data-cy="login">Login</a>
+                                <a href="/register" class="text-sm font-medium leading-5 text-gray-900 hover:underline" data-cy="register">Register</a>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,7 @@
            :key="key"
            class="mr-1 mb-1 px-4 py-3 text-sm border-2 rounded text-gray-400"
            :class="{ 'ml-auto': link.label === 'Next' }"
+           :data-cy="'paginator-'+link.label"
       >
         {{ link.label }}
       </div>
@@ -14,6 +15,7 @@
                     :class="{ 'bg-white': link.active, 'ml-auto': link.label === 'Next' }"
                     @click.prevent="goToLink(link.url)"
                     :href="''"
+                    :data-cy="'paginator-'+key"
       >
         {{ link.label }}
       </inertia-link>
@@ -41,17 +43,19 @@
                   this.$inertia.visit(url, {
                       method: 'get',
                   });
+              }else{
+                  let urlWithParams = this.correctedUrl(url);
+
+                  this.$inertia.visit(urlWithParams, {
+                      method: 'get',
+                  }).then(() => {
+                      const queryString = require('query-string');
+                      const parsed = queryString.parse(location.search);
+                      EventBus.$emit('new_page_value', parsed);
+                  })
               }
 
-              let urlWithParams = this.correctedUrl(url);
 
-              this.$inertia.visit(urlWithParams, {
-                  method: 'get',
-              }).then(() => {
-                  const queryString = require('query-string');
-                  const parsed = queryString.parse(location.search);
-                  EventBus.$emit('new_page_value', parsed);
-              })
           },
           correctedUrl(url) {
               return url + '&'+this.params.column+'=' + this.params.order;

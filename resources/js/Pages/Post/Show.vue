@@ -31,7 +31,7 @@
                                             <dd class="text-gray-900">{{post.author.name}}</dd>
                                             <dt class="sr-only">More Posts</dt>
                                             <dd>
-                                                <inertia-link :href="'/author/'+post.author.id" class="text-teal-500 hover:underline">
+                                                <inertia-link :href="'/author/'+post.author.id" class="text-teal-500 hover:underline" data-cy="author-page">
                                                     More posts from this author
                                                 </inertia-link>
                                             </dd>
@@ -50,7 +50,7 @@
                         </div>
                         <footer class="text-sm font-medium leading-5 divide-y divide-gray-200 xl:col-start-1 xl:row-start-2">
                             <div class="pt-8">
-                                <a class="text-teal-500 hover:text-teal-600" href="/">← Back to the blog</a>
+                                <a class="text-teal-500 hover:text-teal-600" href="/" data-cy="back-to-blog">← Back to the blog</a>
                             </div>
                         </footer>
                     </div>

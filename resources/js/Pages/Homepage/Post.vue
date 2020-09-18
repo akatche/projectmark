@@ -1,6 +1,6 @@
 <template>
     <li class="py-12 px-4">
-        <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+        <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline" :data-cy="'post-'+index">
             <dl>
                 <dt class="sr-only">Published on</dt>
                 <dd class="text-base leading-6 font-medium text-gray-500">
@@ -14,7 +14,7 @@
             <div class="space-y-5 xl:col-span-3">
                 <div class="space-y-6">
                     <h2 class="text-2xl leading-8 font-bold tracking-tight">
-                        <inertia-link class="text-gray-900" :href="post.url" :aria-label="'Read' + post.title">
+                        <inertia-link class="text-gray-900" :href="post.url" :aria-label="'Read' + post.title" :data-cy="'post-'+index+'-title'">
                           {{post.title}}
                         </inertia-link>
                     </h2>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="text-base leading-6 font-medium">
-                    <inertia-link class="text-teal-500 hover:text-teal-600" :href="post.url" :aria-label="'Read' + post.title">
+                    <inertia-link class="text-teal-500 hover:text-teal-600" :href="post.url" :aria-label="'Read' + post.title" :data-cy="'post-'+index+'-read-more'">
                         Read more →
                     </inertia-link>
                 </div>
@@ -35,6 +35,7 @@
     export default {
         props: {
             post: Object,
+            index: Number
         },
     }
 </script>
