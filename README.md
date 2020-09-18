@@ -8,7 +8,7 @@ Run the following commands in order
 
 - Laravel Installation
 ```console
-php artisan composer install
+composer install
 php artisan key:generate
 ```
 - Project Installation
