@@ -68,4 +68,44 @@ context('Post', () => {
         });
     });
 
+    context('Logged user', () => {
+
+        beforeEach(() => {
+            cy.login('admin@projectmark.com','admin');
+        });
+
+        it('can go to dashboard from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Dashboard').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/dashboard');
+        });
+
+        it('can go to posts from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Posts').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/dashboard/posts');
+        });
+
+        it('can go to profile from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Profile').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/user/profile');
+        });
+
+        it('can logout from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Logout').click({ force: true });
+
+            cy.get('[data-cy=login]').should('be.visible');
+            cy.get('[data-cy=register]').should('be.visible');
+        });
+    });
+
 });

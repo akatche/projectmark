@@ -32,19 +32,19 @@
 
                                 <template #content>
                                     <!-- Account Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                    <div class="block px-4 py-2 text-xs text-gray-400" data-cy="dropdown-link">
                                         Manage Account
                                     </div>
 
-                                    <jet-dropdown-link href="/dashboard">
+                                    <jet-dropdown-link href="/dashboard" data-cy="dropdown-link">
                                         Dashboard
                                     </jet-dropdown-link>
 
-                                    <jet-dropdown-link href="/dashboard/posts">
+                                    <jet-dropdown-link href="/dashboard/posts" data-cy="dropdown-link">
                                         Posts
                                     </jet-dropdown-link>
 
-                                    <jet-dropdown-link href="/user/profile">
+                                    <jet-dropdown-link href="/user/profile" data-cy="dropdown-link">
                                         Profile
                                     </jet-dropdown-link>
 
@@ -52,7 +52,7 @@
 
                                     <!-- Authentication -->
                                     <form @submit.prevent="logout">
-                                        <jet-dropdown-link as="button">
+                                        <jet-dropdown-link as="button" data-cy="dropdown-link">
                                             Logout
                                         </jet-dropdown-link>
                                     </form>

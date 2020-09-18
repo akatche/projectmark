@@ -3,20 +3,6 @@
 context('Homepage', () => {
     beforeEach(() => {
         cy.visit('/')
-    })
-
-    context('Guest user', () => {
-        it('can go to login', () => {
-            cy.get('[data-cy=login]').click();
-
-            cy.url().should('match', /login/)
-        });
-
-        it('can go to register', () => {
-            cy.get('[data-cy=register]').click();
-
-            cy.url().should('match', /register/)
-        });
     });
 
     context('Pagination', () => {
@@ -76,5 +62,58 @@ context('Homepage', () => {
         });
     });
 
+    context('Guest user', () => {
+        it('can go to login', () => {
+            cy.get('[data-cy=login]').click();
+
+            cy.url().should('match', /login/)
+        });
+
+        it('can go to register', () => {
+            cy.get('[data-cy=register]').click();
+
+            cy.url().should('match', /register/)
+        });
+    });
+
+    context('Logged user', () => {
+
+        beforeEach(() => {
+            cy.login('admin@projectmark.com','admin');
+        });
+
+        it('can go to dashboard from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Dashboard').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/dashboard');
+        });
+
+        it('can go to posts from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Posts').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/dashboard/posts');
+        });
+
+        it('can go to profile from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Profile').click({ force: true });
+
+            cy.url().should('eq', Cypress.config().baseUrl + '/user/profile');
+        });
+
+        it('can logout from the dropdown', () => {
+            cy.visit('/');
+
+            cy.get('[data-cy=dropdown-link]').contains('Logout').click({ force: true });
+
+            cy.get('[data-cy=login]').should('be.visible');
+            cy.get('[data-cy=register]').should('be.visible');
+        });
+    });
 
 });
